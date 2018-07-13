@@ -1,0 +1,24 @@
+<div>
+    <ul class="tab">
+        <li class="tab-item" v-for="editor in editors.editors" v-bind:class="{ active: editor.id === editors.active}">
+            <a href="#" v-on:click="setActive(editor.id)">[[ editor.name ]]</a>
+        </li>
+    </ul>
+    <div
+        v-for="editor in editors.editors"
+        v-bind:key="editor.id"
+        v-show="editor.id === editors.active"
+        :id="editor.id"
+        class="editor">
+    </div>
+
+    <ul class="tab">
+        <li class="tab-item" v-if="!editors.active">
+            <a href="#" v-on:click="setActive(editor.id)">&nbsp;</a>
+        </li>
+    </ul>
+    <div  class="empty" v-if="!editors.active" id="editor-placeholder">
+        <h4 class="empty-title">No file selected</h4>
+        <p class="empty-subtitle">Select any file on the left to start editing.</p>
+    </div>
+</div>

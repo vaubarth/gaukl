@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+{% include 'header.html' %}
+<body>
+    <div class="container" id="app">
+        <progress class="progress page-load" max="100" v-if="toggles.loading"></progress>
+        <header class="navbar">
+            <section class="navbar-section">
+                <div class="btn-group-block">
+                    <a href="#" class="btn btn-link btn-sm" v-on:click="getPathList('.');toggle('selectFolder')"><i class="fa fa-folder-open"></i> Open</a>
+                    <a href="#" class="btn btn-link btn-sm" v-on:click="toggle('createProject')"><i class="fa fa-file"></i> New</a>
+                </div>
+            </section>
+            <section class="navbar-section">
+
+            </section>
+        </header>
+        <div class="columns col-gapless">
+            <div class="column col-2" id="sidebar">
+                {% include 'sidebar.html' %}
+            </div>
+            <div class="column col-10">
+                {% include 'editor.html' %}
+            </div>
+        </div>
+        <div id="statusbar" v-bind:class="{expanded: toggles.logView}">
+            <div class="columns col-gapless">
+                {% include 'statusbar.html' %}
+            </div>
+        </div>
+
+        <div id="notification-holder">
+            {% include 'notifications.html' %}
+        </div>
+
+        <!-- Modals -->
+        {% include 'selectfolder.html' %}
+        {% include 'createproject.html' %}
+
+    </div>
+
+    <script src="static/shared/js/vue.js"></script>
+    <script src="static/shared/js/vue-resource.js"></script>
+    <script src="static/magician/js/ace/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="static/magician/js/ace/src-noconflict/ext-language_tools.js" type="text/javascript" charset="utf-8"></script>
+
+    <script src="static/magician/js/utils-mixin.js"></script>
+    <script src="static/magician/js/editor-mixin.js"></script>
+    <script src="static/magician/js/editor.js"></script>
+    <script type="application/javascript">
+        app.init();
+    </script>
+
+</body>
+</html>

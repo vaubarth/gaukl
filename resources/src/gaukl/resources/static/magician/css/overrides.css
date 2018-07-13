@@ -1,0 +1,81 @@
+.empty-icon{
+    font-size: 3rem;
+}
+
+.toast:hover {
+    opacity: 0.5;
+}
+
+.btn.btn-link {
+    color: #e7e9ed;
+}
+
+.btn.btn-link:hover {
+    background-color: #5764c6;
+    border-color: #5764c6;
+    color: #fff;
+}
+
+.column {
+    padding-top: 0;
+}
+
+.tab .tab-item.active a, .tab .tab-item a.active {
+    border-bottom-color: #fff;
+    color: #fff;
+}
+
+.tab .tab-item a:focus, .tab .tab-item a {
+    font-size: 1.2rem;
+    color: #acb3c2;
+}
+
+.tab .tab-item a:focus, .tab .tab-item a:hover {
+    border-bottom-color: #acb3c2;
+    color: #acb3c2;
+}
+
+.nav {
+    min-width: 12rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-radius: .2rem;
+}
+
+.nav .nav-item a {
+    color: #fff;
+}
+
+.nav .nav-item a:hover, .nav .nav-item.active > a:hover, .nav .nav-item > a:focus, .nav .nav-item.active > a:focus {
+    color: #acb3c2;
+}
+
+.navbar {
+    border-bottom: 1px solid #727e96;
+}
+
+.nav-item.active {
+    font-weight: bold;
+    padding: .6rem .8rem;
+    color: #e7e9ed;
+}
+
+.nav-item.active > a > i {
+    float:right;
+    color: #e7e9ed;
+}
+
+.page-load {
+    height: 2.5rem;
+    position: fixed;
+    z-index: 500;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.progress:indeterminate {
+    -webkit-animation: progress-indeterminate 1.5s linear infinite;
+    animation: progress-indeterminate 1.5s linear infinite;
+    background: transparent linear-gradient(to right, #5764c6 30%, transparent 30%) top left / 150% 150% no-repeat;
+}

@@ -1,0 +1,10 @@
+listen:
+  {{ recipe.listener.name }}: {{ recipe.listener.args }}
+
+rulesets:
+- {{ ruleset.name }}
+
+workflow:
+  - {{ recipe.workflow.parse_in }}
+  - apply_ruleset
+  - {{ recipe.workflow.parse_out }}

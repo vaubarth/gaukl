@@ -1,0 +1,27 @@
+<div class="modal active" v-if="toggles.createProject">
+    <div class="modal-overlay"></div>
+    <div class="modal-container">
+        <div class="modal-header">
+            <button class="btn btn-clear float-right" v-on:click="toggle('createProject')"></button>
+            <div class="modal-title">Create new project</div>
+        </div>
+        <div class="modal-body">
+            <div class="content">
+                <form>
+                    <div class="form-group">
+                        <label class="form-label" for="newproject-name">Name</label>
+                        <input class="form-input" id="newproject-name" type="text" v-model="newProject.name" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="newproject-path">Path</label>
+                        <input class="form-input" id="newproject-path" type="text" v-model="newProject.path" placeholder="Path">
+                    </div>
+                    <div class="form-group">
+                        <button v-on:click="createNewProject();toggle('createProject')">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer"></div>
+    </div>
+</div>

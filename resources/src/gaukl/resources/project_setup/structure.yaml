@@ -1,0 +1,16 @@
+{{project.name}}:
+  files:
+    - config.yaml:
+        template: config.yaml
+  recipes:
+    files:
+      - recipe.yaml:
+          template: recipe.yaml
+  rulesets:
+    files:
+      - {{ruleset.name}}:
+          template: ruleset.yaml
+  responses:
+    files:
+      - {{response.name}}:
+          content: 'foo: bar'

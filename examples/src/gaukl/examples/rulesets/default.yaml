@@ -1,0 +1,6 @@
+# Default rule to catch not matched requests, returns a default response
+if:
+
+use: default.yaml
+
+with:

@@ -1,0 +1,18 @@
+listen:
+  http_listener: {port: 8081}
+rulesets:
+  - node_is_match_this.yaml
+
+workflow:
+  - request_from_xml
+  - apply_ruleset
+  - http_forwarder:
+      only_not_matched: true
+      url: http://httpbin.org/post
+      request_parser: request_to_xml
+      response_parser: response_from_xml
+  - persist:
+      only_not_matched: true
+      path: ./sniffed
+      name: sniffed.yaml
+  - response_to_xml

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Juggler</title>
+    <script src="static/shared/js/vue.js"></script>
+
+    <script src="static/shared/js/vue-resource.js"></script>
+    <link rel="stylesheet" href="static/juggler/css/juggler.css">
+</head>
+<body>
+    <div id="cards">
+
+    </div>
+    <div id="app">
+        <ol>
+            <service-entry
+                    v-for="service in services"
+                    v-bind:service="service"
+                    v-bind:key="service.name">
+            ></service-entry>
+        </ol>
+    </div>
+    <script src="static/juggler/js/juggler.js"></script>
+
+</body>
+</html>

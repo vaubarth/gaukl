@@ -1,0 +1,37 @@
+project:
+  name: new_project
+config:
+  paths:
+    rulesets: ./rulesets
+    recipes: ./recipes
+    responses: ./responses
+  listeners:
+    - gaukl.core.tasks.listeners.http
+    - gaukl.core.tasks.listeners.file
+  extensions:
+    - gaukl.core.tasks.general.helper
+    - gaukl.core.tasks.general.apply
+    - gaukl.core.tasks.transformers.xml
+    - gaukl.core.tasks.transformers.json
+    - gaukl.core.tasks.general.persist
+  functions:
+    - gaukl.core.functions.tests
+    - gaukl.core.functions.manipulations
+  internal:
+    api_port: 7000
+    log:
+      level: INFO
+      pretty: false
+recipe:
+  listener:
+    name: gaukl.core.tasks.listeners.http
+    args:
+      port: 8080
+  workflow:
+    parse_in: request_from_json
+    parse_out: response_to_json
+ruleset:
+  name: ruleset.yaml
+  response: response.yaml
+response:
+  name: response.yaml

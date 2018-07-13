@@ -1,0 +1,6 @@
+key: value
+
+list:
+  - test
+
+expand: {{ context.request.body.parsed }}

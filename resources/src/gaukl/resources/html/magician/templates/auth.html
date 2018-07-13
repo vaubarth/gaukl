@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+{% include 'header.html' %}
+<body>
+    <div class="container">
+            <div class="modal active">
+                <div class="modal-container">
+                    <div class="modal-header">
+                        <div class="modal-title h5">Ener your User Token</div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="content">
+                            <form action="/auth" method="post">
+                                <label for="usertoken"></label>
+                                <div class="input-group">
+                                    <input name="usertoken" type="password" class="form-input" placeholder="User Token">
+                                    <input type="submit" class="btn btn-primary input-group-btn">
+                                </div>
+                                <p class="form-input-hint">The usertoken can be found in the command output of the gaukl-gui process.</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</body>
+</html>

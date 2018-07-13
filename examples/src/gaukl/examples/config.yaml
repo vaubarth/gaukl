@@ -1,0 +1,35 @@
+paths:
+  rulesets_path: ./rulesets
+  recipes_path: ./recipes
+  responses_path: ./responses
+
+# Provide the module name for each listener/extension/function to be used
+# if it is not allready explicitely imported in something like run.py
+# This is especially interesting if using gaukl from the gaukl-runner.py commandline tool and not a custom script.
+
+listeners:
+  - gaukl.core.tasks.listeners.http
+
+extensions:
+  - gaukl.core.tasks.general.helper
+  - gaukl.core.tasks.general.apply
+  - gaukl.core.tasks.transformers.xml
+  - gaukl.core.tasks.transformers.json
+  - gaukl.core.tasks.general.persist
+  - gaukl.core.tasks.listeners.http
+  - gaukl.core.tasks.rules.tests
+  - gaukl.core.tasks.rules.manipulations
+  - gaukl.examples.myextensions
+
+internal:
+  juggler:
+    enabled: false
+    path: localhost:23949
+  vardb_path: vardb.json
+  eventdb_path: eventdb.json
+  api:
+    server.socket_port: 7000
+  logging:
+    log_level: DEBUG
+    log_format: '%(asctime)s - %(levelname)s - %(name)s - %(message)s'
+    pretty_print: false

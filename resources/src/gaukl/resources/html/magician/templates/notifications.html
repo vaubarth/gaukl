@@ -1,0 +1,7 @@
+<div v-if="notifications" v-for="(notification, index) in notifications">
+    <div v-on:click="notifications.splice(index, 1)" class="toast notification" v-bind:class="{'toast-success': notification.state.success, 'toast-error': notification.state.error, 'toast-primary': notification.state.info}">
+        <button class="btn btn-clear float-right" v-on:click="notifications.splice(index, 1)"></button>
+        [[ notification.text ]]
+    </div>
+    <br/>
+</div>

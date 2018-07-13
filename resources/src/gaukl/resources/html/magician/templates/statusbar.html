@@ -1,0 +1,25 @@
+<div class="col-6">
+    <span id="current-config"><i class="fa fa-folder-open"></i> [[ config.path ]]</span>
+</div>
+<div class="col-5">
+   <span v-if="activeEditor.name"><i class="fa fa-file"></i> [[ activeEditor.type ]]: [[ activeEditor.name ]]</span>
+</div>
+<div class="col-1 text-right">
+    <a v-on:click="toggle('logView')" href="#" id="log-toggle">
+        Event Log <i class="fa" v-bind:class="{'fa-angle-double-up': !toggles.logView, 'fa-angle-double-down': toggles.logView}"></i>
+    </a>
+</div>
+
+<div class="columns col-gapless">
+    <div v-if="toggles.logView" style="padding-top:1rem;">
+        <div v-for="log in logs">
+            <span class="label label-success" v-if="log.type.success">success</span>
+            <span class="label label-primary" v-if="log.type.info">info</span>
+            <span class="label label-error" v-if="log.type.error">error</span>
+            <span class="label label-warning" v-if="log.type.warning">warning</span>
+            [[ log.time ]]
+            <br>
+            <pre>[[ log.message ]]</pre>
+        </div>
+    </div>
+</div>

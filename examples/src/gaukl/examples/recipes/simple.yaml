@@ -1,0 +1,14 @@
+listen:
+  http_listener: {port: 8080}
+rulesets:
+  - node_is_match_this.yaml
+  - default.yaml
+
+workflow:
+  - request_from_xml
+  - log:
+      message: foo
+      reason: bar
+  - mytask
+  - apply_ruleset
+  - response_to_xml

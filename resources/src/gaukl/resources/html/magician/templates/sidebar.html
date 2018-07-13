@@ -1,0 +1,70 @@
+<ul class="tab tab-block" id="select-view-style">
+    <li class="tab-item" v-bind:class="{active: toggles.viewFlat}">
+        <a href="#" v-on:click="toggles.viewFlat = true"><i class="fa fa-bars"></i> Flat</a>
+    </li>
+    <li class="tab-item" v-bind:class="{active: !toggles.viewFlat}">
+        <a href="#" v-on:click="toggles.viewFlat = false"><i class="fa fa-align-left"></i> Nested</a>
+    </li>
+</ul>
+<!-- Sidebar lists -->
+<div>
+    <!-- The config itself -->
+    <ul class="nav" >
+        <li class="nav-item">
+             <a href="#" v-if="config.path" v-on:click="addEditor({id:'config', name:'config.yaml'}, 'config')">config.yaml</a>
+        </li>
+    </ul>
+
+    <!-- Flat view -->
+    <ul class="nav" v-for="recipe in recipes.recipes" v-if="toggles.viewFlat">
+        <!-- TODO: createFile needs a name input -->
+        <li class="nav-item active">Recipe
+            <ul class="nav">
+                <li class="nav-item">
+                     <a href="#" v-on:click="addEditor(recipe, 'recipe')">[[ recipe.name ]]</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item active">Rulesets
+            <ul class="nav">
+                <li v-for="ruleset in recipe.rulesets" class="nav-item">
+                    <a v-on:click="addEditor(ruleset, 'ruleset')" href="#">
+                        [[ ruleset.name ]]
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item active">Responses
+            <ul class="nav">
+                <li v-for="response in recipe.responses" class="nav-item">
+                    <a v-on:click="addEditor(response, 'response')"  href="#">
+                        [[response.name]]
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li><hr></li>
+    </ul>
+
+    <!-- Nested view -->
+    <ul v-for="recipe in recipes.recipes" v-if="!toggles.viewFlat" class="nav">
+        <li class="nav-item active">
+             <a href="#" v-on:click="addEditor(recipe, 'recipe')" title="Recipe">[[ recipe.name ]]</a>
+            <ul class="nav">
+                <li v-for="ruleset in recipe.rulesets" class="nav-item">
+                    <a v-on:click="addEditor(ruleset, 'ruleset')" href="#" title="Ruleset">
+                        [[ ruleset.name ]]
+                    </a>
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a v-on:click="addEditor(ruleset.use, 'response')" href="#" title="Response">
+                                [[ruleset.use.name]]
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><hr></li>
+    </ul>
+</div>
