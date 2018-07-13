@@ -98,3 +98,6 @@ ENV/
 /sniffer/
 /examples/*db.json
 /gaukl/*db.json
+/buildall.sh
+eventdb.json
+vardb.json

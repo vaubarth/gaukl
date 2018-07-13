@@ -19,7 +19,7 @@ extensions:
   - gaukl.core.tasks.listeners.http
   - gaukl.core.tasks.rules.tests
   - gaukl.core.tasks.rules.manipulations
-  - gaukl.examples.myextensions
+  - gaukl.examples.extensions.myextensions
 
 internal:
   juggler:
