@@ -1,6 +1,6 @@
 key: value
 
 list:
-  - test
+- test
 
 expand: {{ context.request.body.parsed }}

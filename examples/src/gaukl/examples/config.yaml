@@ -8,18 +8,18 @@ paths:
 # This is especially interesting if using gaukl from the gaukl-runner.py commandline tool and not a custom script.
 
 listeners:
-  - gaukl.core.tasks.listeners.http
+- gaukl.core.tasks.listeners.http
 
 extensions:
-  - gaukl.core.tasks.general.helper
-  - gaukl.core.tasks.general.apply
-  - gaukl.core.tasks.transformers.xml
-  - gaukl.core.tasks.transformers.json
-  - gaukl.core.tasks.general.persist
-  - gaukl.core.tasks.listeners.http
-  - gaukl.core.tasks.rules.tests
-  - gaukl.core.tasks.rules.manipulations
-  - gaukl.examples.extensions.myextensions
+- gaukl.core.tasks.general.helper
+- gaukl.core.tasks.general.apply
+- gaukl.core.tasks.transformers.xml
+- gaukl.core.tasks.transformers.json
+- gaukl.core.tasks.general.persist
+- gaukl.core.tasks.listeners.http
+- gaukl.core.tasks.rules.tests
+- gaukl.core.tasks.rules.manipulations
+- gaukl.examples.extensions.myextensions
 
 internal:
   juggler:

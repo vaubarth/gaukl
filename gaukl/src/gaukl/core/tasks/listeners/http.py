@@ -51,22 +51,24 @@ def http_on(env: Dict, start_response: Callable[[str, List], Any]) -> List[bytes
 
 
 @task(shortname='http_forwarder', role=Roles.WORKFLOW, async=False)
-def forwarder(context: Context, only_not_matched: bool = True, url: str = None, request_parser: str = None, response_parser: str = None) -> Context:
+def forwarder(context: Context, only_not_matched: bool = True, url: str = None, request_parser: str = None,
+              response_parser: str = None) -> Context:
     # TODO: Not flexible enough. @forward annotation to handle parsers?
     if only_not_matched and context.is_matched():
         return context
     context = context['environment']['tasks'][request_parser](context)
 
-    headers = {k: v for k, v in context.parsed_request_header().items() if k not in ['gaukl_method', 'gaukl_method_path', 'HOST', 'gaukl_status']}
-    req = Request(context.parsed_request_header()['gaukl_method'], url, data=context.raw_request_body(), headers=headers).prepare()
+    headers = {k: v for k, v in context.parsed_request_header().items() if
+               k not in ['gaukl_method', 'gaukl_method_path', 'HOST', 'gaukl_status']}
+    req = Request(context.parsed_request_header()['gaukl_method'], url, data=context.raw_request_body(),
+                  headers=headers).prepare()
     resp = Session().send(req)
-    
+
     context.parsed_response_header({})
     for k, v in resp.headers.items():
         context.parsed_response_header()[k] = v
-    
+
     context.parsed_response_header()['gaukl_status'] = str(resp.status_code)
     context.raw_response_body(resp.text)
-    
-    return context['environment']['tasks'][response_parser](context)
 
+    return context['environment']['tasks'][response_parser](context)

@@ -1,18 +1,18 @@
 if:
-  - my_other_task
-  - compare:
-      selector: request.body.parsed.node
-      comparator: ==
-      compare_to: match this
+- my_other_task
+- compare:
+    selector: request.body.parsed.node
+    comparator: ==
+    compare_to: match this
 
 # TODO: Think about a 'prepare' step to set vars for the template expansion in use
 
 use: default.yaml
 
 with:
-  - set_variable:
-      name: varname
-      set_to: varvalue
-  - set_value:
-      selector: response.body.parsed.node.answer
-      set_to: Matched {% get_variable 'varname' %}
+- set_variable:
+    name: varname
+    set_to: varvalue
+- set_value:
+    selector: response.body.parsed.node.answer
+    set_to: Matched {% get_variable 'varname' %}

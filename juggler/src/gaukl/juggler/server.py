@@ -81,7 +81,7 @@ def get_services():
 def register_service():
     data = request.json
     host = data['host'] if data['host'] else request.remote_addr
-    app.config['services'].add(host+':'+str(data['port']))
+    app.config['services'].add(host + ':' + str(data['port']))
     return jsonify(list(app.config['services']))
 
 

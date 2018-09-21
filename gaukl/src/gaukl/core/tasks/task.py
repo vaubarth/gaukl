@@ -35,6 +35,7 @@ def task(shortname=None, role=None, async=False):
 
     return task_decorator
 
+
 class Roles(Enum):
     WORKFLOW = 'workflow'
     GENERAL = 'general'

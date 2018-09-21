@@ -26,5 +26,3 @@ def response_from_json(context: Context) -> Context:
 def response_to_json(context: Context) -> Context:
     context.raw_response_body(json.dumps(context.parsed_response_body()))
     return context
-
-

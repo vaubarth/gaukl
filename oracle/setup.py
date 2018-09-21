@@ -15,7 +15,7 @@ setup(
         'Topic :: Software Development :: Testing',
         'License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)'
     ],
-    packages=['gaukl','gaukl.oracle'],
+    packages=['gaukl', 'gaukl.oracle'],
     package_dir={'': 'src'},
     namespace_packages=['gaukl'],
     install_requires=[

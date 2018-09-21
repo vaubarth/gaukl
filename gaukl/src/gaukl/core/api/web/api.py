@@ -11,7 +11,6 @@ from gaukl.core.helper.files import load_yaml_path
 from gaukl.core.context.context import Context
 from gaukl.core.recipes import run_recipe
 
-
 app = Flask(__name__)
 
 
@@ -52,7 +51,8 @@ def stop_recipe(recipe):
 def start_recipe(recipe):
     if recipe not in app.config['recipes']:
         abort(404)
-    listener_process = Process(group=None, target=run_recipe, args=[app.config['context']['environment']['config'], recipe])
+    listener_process = Process(group=None, target=run_recipe,
+                               args=[app.config['context']['environment']['config'], recipe])
     listener_process.start()
     app.config['listener_processes'][recipe] = listener_process.pid
     return jsonify({'recipe': recipe, 'state': 'started'})

@@ -45,7 +45,7 @@ def on_request():
 
             # Execute all tasks in thr given recipe workflow
             workflow = build_workflow(context_copy['environment']['recipe']['workflow'],
-                                                          context_copy['environment']['tasks'])
+                                      context_copy['environment']['tasks'])
             return execute_workflow(context_copy, workflow)
 
         return func_wrapper

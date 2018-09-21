@@ -1,6 +1,6 @@
 import argparse
 import logging
-from multiprocessing import Process
+import multiprocessing as mp
 from pathlib import Path
 
 import requests
@@ -28,7 +28,7 @@ def run_gaukl(config_file_path: str) -> None:
     recipe_names = []
 
     for recipe in recipes:
-        listener_process = Process(group=None, target=run_recipe, args=[config, recipe.name])
+        listener_process = mp.Process(group=None, target=run_recipe, args=[config, recipe.name])
         listener_process.start()
         logger.info(f'Loading recipe {recipe.name}')
         recipe_names.append(recipe.name)
@@ -45,6 +45,7 @@ def run_gaukl(config_file_path: str) -> None:
 
 
 if __name__ == '__main__':
+    mp.freeze_support()
     parser = argparse.ArgumentParser()
     parser.add_argument("config_file_path", help="Path to the config file, ex. ./examples/config.yaml")
     args = parser.parse_args()

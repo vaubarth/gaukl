@@ -15,11 +15,11 @@ from gaukl.core.context.context import get_default_context
 from gaukl.magician import helpers
 from gaukl.core.helper.files import load_yaml_path
 
-
 # noinspection PyUnresolvedReferences
 resources_path = Path(gaukl.resources.__file__).parent.resolve()
 
-app = Flask(__name__, static_folder=str(resources_path.joinpath('static').resolve()), template_folder=resources_path.joinpath('html','magician','templates'))
+app = Flask(__name__, static_folder=str(resources_path.joinpath('static').resolve()),
+            template_folder=resources_path.joinpath('html', 'magician', 'templates'))
 app.secret_key = secrets.token_urlsafe()
 
 app.config['base_path'] = resources_path
@@ -126,6 +126,7 @@ def get_recipe(recipe: str) -> dict:
     recipe['rulesets'] = expanded_rulesets
     recipe['responses'] = responses
     return jsonify(recipe)
+
 
 # Config
 @app.route('/api/config', methods=['GET'])
